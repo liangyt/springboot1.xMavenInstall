@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<portable-config>
+    <config-file path="WEB-INF/classes/application.properties">
+        <replace key="key.test">test</replace>
+        <replace key="key.product">test</replace>
+    </config-file>
+</portable-config>

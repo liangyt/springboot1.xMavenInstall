@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangyt.dao.dict.DictRegionDao">
+
+  <resultMap id="BaseResultMap" type="com.liangyt.entity.dict.DictRegion">
+    <id column="id" property="id" />
+    <result column="region_code" property="regionCode" />
+    <result column="region_name" property="regionName" />
+    <result column="region_explain" property="regionExplain" />
+    <result column="region_status" property="regionStatus" />
+    <result column="create_date" property="createDate" />
+    <result column="create_time" property="createTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, region_code, region_name, region_explain, region_status, create_date, create_time
+  </sql>
+
+  <select id="getById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dict_region
+    where id = #{id}
+  </select>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dict_region
+  </select>
+
+  <select id="findAllWithOpen" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from dict_region
+    where region_status = 'OPEN'
+  </select>
+</mapper>
