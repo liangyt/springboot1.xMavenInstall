@@ -76,6 +76,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <!-- 这里添加的变量，就是profiles 里面需要使用到的文件路径对应的属性值 -->
                     <portableConfig>${portableConfig}</portableConfig>
                 </configuration>
             </plugin>
@@ -83,15 +84,18 @@
     </build>
 
     <profiles>
+        <!-- mvn install -DskipTest -->
         <profile>
             <id>test</id>
             <properties>
                 <portableConfig>src/main/portable/test.xml</portableConfig>
             </properties>
             <activation>
+                <!-- 默认使用的配置 -->
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
+        <!-- mvn install -DskipTest -Pproduct -->
         <profile>
             <id>product</id>
             <properties>
